@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:layout_margin="5dip"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="60dip"
+            android:layout_weight="1"
+            android:hint="请输入ip" />
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="100dip"
+            android:layout_height="50dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:text="提交" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dip"
+        android:layout_weight="1" />
+
+
+    <TextView
+        android:id="@+id/txt_copy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="10dip"
+        android:gravity="center"
+        android:padding="10dip"
+        android:text="复制结果" />
+
+</LinearLayout>
