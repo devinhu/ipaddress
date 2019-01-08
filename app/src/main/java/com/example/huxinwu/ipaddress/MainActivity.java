@@ -23,13 +23,14 @@ import com.example.huxinwu.ipaddress.model.IPResult;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText edit_text;
+    private EditText edit_text, edit_text1;
     private Button btn_submit;
     private TextView text_result;
     private TextView txt_copy;
 
     private IPAction action;
     private String ip;
+    private String query;
     private String latlng;
 
     private StringBuilder addressStr;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         edit_text = findViewById(R.id.edit_text);
+        edit_text1 = findViewById(R.id.edit_text1);
         btn_submit = findViewById(R.id.btn_submit);
         btn_submit.setOnClickListener(this);
 
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.btn_submit){
+            text_result.setText("");
+            query = edit_text1.getText().toString();
             ip = edit_text.getText().toString();
             if(TextUtils.isEmpty(ip)){
                 Toast.makeText(this, "ip不能为空", Toast.LENGTH_SHORT).show();
@@ -78,10 +82,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         IPResult response = action.getIPResult(ip);
                         if(response != null){
                             latlng = response.getLat() + "," + response.getLon();
-                            AddressResult result = action.getAddressResult(latlng);
+                            AddressResult result = action.getAddressResult(latlng, query);
                             addressStr = new StringBuilder();
                             if(result != null && result.getResults() != null && result.getResults().size() > 0){
-                                addressStr.append(result.getResults().get(0).getFormatted_address());
+                                for(AddressItem item : result.getResults()){
+                                    addressStr.append(item.getFormatted_address()).append("\n\n");
+                                }
                                 handler.sendEmptyMessage(0);
                             }
                         }else{

@@ -7,11 +7,19 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/edit_text1"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:text="Street"
+        android:hint="请输入关键词" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dip"
         android:layout_margin="5dip"
         android:orientation="horizontal">
+
 
         <EditText
             android:id="@+id/edit_text"
@@ -35,6 +43,7 @@
         android:id="@+id/text_result"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:lines="10"
         android:padding="10dip"
         android:layout_weight="1" />
 
